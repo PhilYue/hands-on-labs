@@ -9,21 +9,23 @@ wget https://handson.oss-cn-shanghai.aliyuncs.com/mysql-5.6.30-linux-glibc2.5-x8
 tar -xzvf .mysql-5.6.30-linux-glibc2.5-x86_64.tar.gz
 
 mv mysql-5.6.30-linux-glibc2.5-x86_64 .mysql
+mv mysql/mysqld.cnf .mysql/mysqld.cnf
 
 cd .mysql
 
 echo "installing mysql server ......"
 
-./scripts/mysql_install_db --basedir=/home/shell/.mysql --datadir=/home/shell/data/ --socket=/home/shell/data/mysql.sock --bind-address=0.0.0.0
+#./scripts/mysql_install_db --basedir=/home/shell/.mysql --datadir=/home/shell/data/ --socket=/home/shell/data/mysql.sock --bind-address=0.0.0.0
+./scripts/mysql_install_db --basedir=/home/shell/.mysql
 
 echo "starting mysql server ......"
 
-./bin/mysqld_safe&
+./bin/mysqld_safe --defaults-file=/home/shell/.mysql/mysqld.cnf &
 
 sleep 5
 
-mysqladmin -uroot create seata
+mysqladmin --defaults-file=/home/shell/.mysql/mysqld.cnf -uroot create seata
 
-mysql -uroot < /home/shell/seata.sql
+mysql --defaults-file=/home/shell/.mysql/mysqld.cnf -uroot < /home/shell/mysql/seata.sql
 
 echo "init mysql server done"
