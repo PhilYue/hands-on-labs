@@ -1,0 +1,10 @@
+{
+  "directory": [
+    {
+      "folderName": "shopping-order",
+      "title": "dubbogo 电商背景下分布式事务及APM监控案例"
+    }
+
+  ],
+  "scenario_root": "tutorials"
+}
