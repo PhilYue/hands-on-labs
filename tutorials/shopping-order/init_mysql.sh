@@ -24,8 +24,8 @@ sleep 5
 
 #mysqld --defaults-file=/etc/my.cnf --user=root
 
-#mysqladmin -uroot create seata_training
+mysqladmin -uroot create seata
 
-#mysql -uroot < /home/shell/init.sql
+mysql -uroot < /home/shell/seata.sql
 
 echo "init mysql server done"
