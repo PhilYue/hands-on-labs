@@ -24,8 +24,16 @@ echo "starting mysql server ......"
 
 sleep 5
 
+echo "create database seata and init tables"
 mysqladmin --defaults-file=/home/shell/.mysql/mysqld.cnf -uroot create seata
-
 mysql --defaults-file=/home/shell/.mysql/mysqld.cnf -uroot < /home/shell/mysql/seata.sql
+
+echo "create database seata_order and init tables"
+mysqladmin --defaults-file=/home/shell/.mysql/mysqld.cnf -uroot create seata_order
+mysql --defaults-file=/home/shell/.mysql/mysqld.cnf -uroot < /home/shell/mysql/seata_order.sql
+
+echo "create database seata_product and init tables"
+mysqladmin --defaults-file=/home/shell/.mysql/mysqld.cnf -uroot create seata_product
+mysql --defaults-file=/home/shell/.mysql/mysqld.cnf -uroot < /home/shell/mysql/seata_product.sql
 
 echo "init mysql server done"
