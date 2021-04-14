@@ -14,7 +14,7 @@ cd .mysql
 
 echo "installing mysql server ......"
 
-./scripts/mysql_install_db --basedir /home/shell/.mysql --socket /home/shell/tmp/mysql/mysqld.sock
+./scripts/mysql_install_db --basedir /home/shell/.mysql --socket=/tmp/mysql.sock
 
 echo "starting mysql server ......"
 
