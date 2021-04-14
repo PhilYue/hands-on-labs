@@ -14,15 +14,13 @@ cd .mysql
 
 echo "installing mysql server ......"
 
-./scripts/mysql_install_db --basedir /home/shell/.mysql
+./scripts/mysql_install_db --basedir /home/shell/.mysql --socket /home/shell/tmp/mysql/mysqld.sock
 
 echo "starting mysql server ......"
 
 ./bin/mysqld_safe&
 
 sleep 5
-
-#mysqld --defaults-file=/etc/my.cnf --user=root
 
 mysqladmin -uroot create seata
 
