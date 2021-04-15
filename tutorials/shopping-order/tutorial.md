@@ -93,7 +93,7 @@ sh ~/seata-script/init_seatagolang.sh
 * 修改 `transaction_service_group` Seata 地址："127.0.0.1:8091"
 
 **修改注册中心Nacos地址**
-* 打开 <tutorial-editor-open-file filePath="/home/shell/shopping-order/go-client/conf/server.yml">服务端的 server.yml</tutorial-editor-open-file> 配置文件：
+* 打开 <tutorial-editor-open-file filePath="/home/shell/shopping-order/go-client/conf/client.yml">服务端的 server.yml</tutorial-editor-open-file> 配置文件：
 * 修改 `registries>nacos>address` Nacos 地址："127.0.0.1:8848"
 
 ## 运行程序
