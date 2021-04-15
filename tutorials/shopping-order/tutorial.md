@@ -164,10 +164,10 @@ cd shopping-order/go-client/cmd
 提交事务 & 事务回滚
 ```go
 // commit success
- pkg.ProxySvc.CreateSo(context.TODO(), false)
+pkg.ProxySvc.CreateSo(context.TODO(), false)
 
- // rollback
- pkg.ProxySvc.CreateSo(context.TODO(), true)
+// rollback
+pkg.ProxySvc.CreateSo(context.TODO(), true)
 ```
 
 2. 登录 Mysql 客户端查看记录
