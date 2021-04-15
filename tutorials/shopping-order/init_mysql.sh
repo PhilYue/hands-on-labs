@@ -15,7 +15,6 @@ cd .mysql
 
 echo "installing mysql server ......"
 
-#./scripts/mysql_install_db --basedir=/home/shell/.mysql --datadir=/home/shell/data/ --socket=/home/shell/data/mysql.sock --bind-address=0.0.0.0
 ./scripts/mysql_install_db --basedir=/home/shell/.mysql
 
 echo "starting mysql server ......"
