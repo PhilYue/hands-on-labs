@@ -152,6 +152,50 @@ export CONF_CONSUMER_FILE_PATH=../conf/client.yml && export SEATA_CONF_FILE=../c
 
 看到下面的反馈则表示调用成功<br>
 
+### 查看数据库记录
+
+#### 开启新 console 窗口：<br>
+
+1. `client` 提供了两个用例 “下单成功提交”，“下单失败回滚”
+
+```bash
+cd shopping-order/go-client/cmd
+```
+提交事务 & 事务回滚
+```go
+// commit success
+ pkg.ProxySvc.CreateSo(context.TODO(), false)
+
+ // rollback
+ pkg.ProxySvc.CreateSo(context.TODO(), true)
+```
+
+2. 登录 Mysql 客户端查看记录
+
+* 登录 Mysql 控制台：
+
+```shell
+mysql --defaults-file=/home/shell/.mysql/mysqld.cnf -uroot
+```
+
+* 查看下单记录
+```mysql
+use seata_order;
+```
+```mysql
+select * from seata_order.so_master;
+```
+```mysql
+select * from seata_order.so_item;
+```
+
+* 查看库存记录
+```mysql
+use seata_product;
+```
+```mysql
+select * from seata_product.inventory;
+```
 
 Dubbo-go 在电商交易背景下分布式事务示例完成～
 
