@@ -102,7 +102,7 @@ sh ~/seata-script/init_seatagolang.sh
 
 ### 启动服务端
 1. 开启新 console 窗口执行 Order：<br>
-   <tutorial-terminal-open-tab name="服务端">点击我打开</tutorial-terminal-open-tab>
+   <tutorial-terminal-open-tab name="Order服务端">点击我打开</tutorial-terminal-open-tab>
 
 2. 在新窗口中执行命令，进入cmd目录，
 ```bash
@@ -119,7 +119,7 @@ export CONF_PROVIDER_FILE_PATH=../conf/server.yml && export SEATA_CONF_FILE=../c
 ```
 
 1. 开启新 console 窗口执行 Product：<br>
-   <tutorial-terminal-open-tab name="服务端">点击我打开</tutorial-terminal-open-tab>
+   <tutorial-terminal-open-tab name="Product服务端">点击我打开</tutorial-terminal-open-tab>
 
 2. 在新窗口中执行命令，进入cmd目录，
 ```bash
