@@ -2,6 +2,9 @@
 
 给个star鼓励一下我们吧： [github.com/apache/dubbo-go](https://github.com/apache/dubbo-go)
 
+p.s : 受实验室环境功能的限制，可自行去 Dubbo-go 社区 示例仓库 [github.com/apache/dubbo-go-sample](https://github.com/apache/dubbo-go-sample) ，`clone` 示例仓库得到完整的实践体验 
+
+
 ## 教程说明
 通过该教程，你将会：
 
