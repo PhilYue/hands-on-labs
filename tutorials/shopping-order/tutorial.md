@@ -66,7 +66,7 @@ sh ~/init_mysql.sh
 sh ~/seata-script/init_seatagolang.sh
 ```
 
-## 修改 Shopping-Order 配置
+## 修改 Shopping-Order 配置(程序代码已经默认可直接运行)
 本节，你将修改代码的一些基本配置，让程序可以运行。<br>
 请认真按照本节的引导操作。在完成修改后，一定要记得保存哦。
 
