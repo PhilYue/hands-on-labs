@@ -136,7 +136,7 @@ export CONF_PROVIDER_FILE_PATH=../conf/server.yml && export SEATA_CONF_FILE=../c
 cd shopping-order/go-server-product/cmd
 ```
 
-指定配置文件, 启动服务端
+3. 指定配置文件, 启动服务端(初次编译会1~2min)
 ```bash
 export CONF_PROVIDER_FILE_PATH=../conf/server.yml && export SEATA_CONF_FILE=../conf/seata.yml && export GOPROXY=https://goproxy.io,direct && go run .
 ```
@@ -163,7 +163,7 @@ export CONF_PROVIDER_FILE_PATH=../conf/server.yml && export SEATA_CONF_FILE=../c
 cd shopping-order/go-client/cmd
 ```
 
-指定配置文件, 启动客户端
+3. 指定配置文件, 启动客户端
 ```bash
 export CONF_CONSUMER_FILE_PATH=../conf/client.yml && export SEATA_CONF_FILE=../conf/seata.yml && export GOPROXY=https://goproxy.io,direct && go run .
 ```
@@ -200,8 +200,10 @@ use seata_product;
 select * from seata_product.inventory;
 ```
 
+---
+
 Dubbo-go 在电商交易背景下分布式事务示例完成～
 
 给个star鼓励一下我们吧： [github.com/apache/dubbo-go](https://github.com/apache/dubbo-go)
 
-
+---
