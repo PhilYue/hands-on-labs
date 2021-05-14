@@ -22,10 +22,13 @@ p.s : 受实验室环境功能的限制，可自行去 Dubbo-go 社区 示例仓
 ### 获取客户端及服务端程序代码
 请使用下面的命令获取客户端及服务端程序代码
 ```bash
-git clone https://github.com/PhilYue/shopping-order.git
+git clone https://github.com/PhilYue/shopping-order.git -b feature/handsonlab
 ```
 
 ### 启动 Nacos 服务端
+
+(已自动安装，如果安装失败再自行安装)
+
 通过如下命令启动nacos服务端
 ```bash
 sh ~/prepare.sh
@@ -63,11 +66,13 @@ sh ~/seata-script/init_seatagolang.sh
 本节，你将修改代码的一些基本配置，让程序可以运行。<br>
 请认真按照本节的引导操作。在完成修改后，一定要记得保存哦。
 
+（已默认，检查配置即可）
+
 ### 修改服务端 Order 配置
 
 **修改注册中心Nacos地址**
 * 打开 <tutorial-editor-open-file filePath="/home/shell/shopping-order/go-server-order/conf/server.yml">服务端的 server.yml</tutorial-editor-open-file> 配置文件：
-* 修改 `registries>nacos>address` Nacos 地址："127.0.0.1:8848"
+* 修改 `registries>nacos>address` Nacos 地址："127.0.0.1:65000"
 
 **修改Seata数据库地址**
 * 打开 <tutorial-editor-open-file filePath="/home/shell/shopping-order/go-server-order/conf/seata.yml">服务端的 seata.yml</tutorial-editor-open-file> 配置文件：
@@ -83,7 +88,7 @@ sh ~/seata-script/init_seatagolang.sh
 
 **修改注册中心Nacos地址**
 * 打开 <tutorial-editor-open-file filePath="/home/shell/shopping-order/go-server-product/conf/server.yml">服务端的 server.yml</tutorial-editor-open-file> 配置文件：
-* 修改 `registries>nacos>address` Nacos 地址："127.0.0.1:8848"
+* 修改 `registries>nacos>address` Nacos 地址："127.0.0.1:65000"
 
 
 ### 修改客户端配置
@@ -94,15 +99,14 @@ sh ~/seata-script/init_seatagolang.sh
 
 **修改注册中心Nacos地址**
 * 打开 <tutorial-editor-open-file filePath="/home/shell/shopping-order/go-client/conf/client.yml">服务端的 server.yml</tutorial-editor-open-file> 配置文件：
-* 修改 `registries>nacos>address` Nacos 地址："127.0.0.1:8848"
+* 修改 `registries>nacos>address` Nacos 地址："127.0.0.1:65000"
 
 ## 运行程序
 
 本节，你将使用 go 命令来运行上述的代码和配置
 
 ### 启动服务端
-1. 开启新 console 窗口执行 Order：<br>
-   <tutorial-terminal-open-tab name="Order服务端">点击我打开</tutorial-terminal-open-tab>
+1. 开启新 console 窗口执行 Order： <tutorial-terminal-open-tab name="Order服务端">点击我打开</tutorial-terminal-open-tab>
 
 2. 在新窗口中执行命令，进入cmd目录，
 ```bash
@@ -118,8 +122,7 @@ export CONF_PROVIDER_FILE_PATH=../conf/server.yml && export SEATA_CONF_FILE=../c
  nacos/registry.go:200   update begin, service event: ServiceEvent{Action{add}, Path{dubbo...
 ```
 
-1. 开启新 console 窗口执行 Product：<br>
-   <tutorial-terminal-open-tab name="Product服务端">点击我打开</tutorial-terminal-open-tab>
+1. 开启新 console 窗口执行 Product： <tutorial-terminal-open-tab name="Product服务端">点击我打开</tutorial-terminal-open-tab>
 
 2. 在新窗口中执行命令，进入cmd目录，
 ```bash
@@ -137,8 +140,7 @@ export CONF_PROVIDER_FILE_PATH=../conf/server.yml && export SEATA_CONF_FILE=../c
 ```
 
 ### 启动客户端
-1. 开启新 console 窗口：<br>
-   <tutorial-terminal-open-tab name="客户端">点击我打开</tutorial-terminal-open-tab>
+1. 开启新 console 窗口： <tutorial-terminal-open-tab name="客户端">点击我打开</tutorial-terminal-open-tab>
 
 2. 在新窗口中执行命令
 ```bash
