@@ -32,16 +32,13 @@
 git clone https://github.com/PhilYue/shopping-order.git -b feature/handsonlab
 ```
 
-### 启动 Nacos 服务端
+### 启动 Nacos 服务端(已自动安装，如果安装失败再自行安装)
 
-(已自动安装，如果安装失败再自行安装)
 
 通过如下命令启动nacos服务端
 ```bash
 sh ~/prepare.sh
 ```
-
-----
 
 通过如下命令观察nacos启动日志:
 ```bash
@@ -53,7 +50,7 @@ cat /home/shell/nacos/logs/start.out
 > ......<br>
 > INFO Nacos started successfully in stand alone mode. use embedded storage
 
-### 安装 Mysql 并初始化数据库
+### 安装 Mysql 并初始化数据库(已自动安装，如果安装失败再自行安装)
 
 通过如下命令
 
@@ -61,7 +58,7 @@ cat /home/shell/nacos/logs/start.out
 sh ~/init_mysql.sh
 ```
 
-### 启动 Seata-golang 服务端
+### 安装启动 Seata-golang 服务端(已自动安装，如果安装失败再自行安装)
 
 执行命令
 
