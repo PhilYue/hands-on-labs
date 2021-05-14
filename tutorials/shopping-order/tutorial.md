@@ -37,7 +37,7 @@ sh ~/prepare.sh
 ### 获取客户端及服务端程序代码
 请使用下面的命令获取客户端及服务端程序代码
 ```bash
-git clone https://github.com/PhilYue/shopping-order.git -b feature/handsonlab
+git clone https://github.com/PhilYue/shopping-order.git -b feature/handsonlabv2
 ```
 
 ### 启动 Nacos 服务端(已自动安装，如果安装失败再自行安装)
