@@ -17,7 +17,14 @@
 - [ ] mysql
 - [ ] seata-golang
 
-示例已在环境准备之初自动`install`，如有安装失败，本教程提供了一键安装脚本；
+请先准备依赖环境：
+
+通过如下命令一键安装依赖服务（1~3min）
+```bash
+sh ~/prepare.sh
+```
+
+如有安装失败，本教程在“下一步”提供了各个依赖的安装脚本；
 
 
 案例学习时间预计25分钟左右。
@@ -37,7 +44,7 @@ git clone https://github.com/PhilYue/shopping-order.git -b feature/handsonlab
 
 通过如下命令启动nacos服务端
 ```bash
-sh ~/prepare.sh
+sh ~/init_nacos.sh
 ```
 
 通过如下命令观察nacos启动日志:
