@@ -2,7 +2,8 @@
 
 给个star鼓励一下我们吧： [github.com/apache/dubbo-go](https://github.com/apache/dubbo-go)
 
-还有更多示例，请自行去 Dubbo-go 示例仓库 [github.com/apache/dubbo-go-sample](https://github.com/apache/dubbo-go-sample) 
+分布式事务：Seata-golang  [https://github.com/opentrx/seata-golang](https://github.com/opentrx/seata-golang) 
+
 
 
 ## 教程说明
