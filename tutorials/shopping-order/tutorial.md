@@ -2,7 +2,7 @@
 
 给个star鼓励一下我们吧： [github.com/apache/dubbo-go](https://github.com/apache/dubbo-go)
 
-p.s : 受实验室环境功能的限制，可自行去 Dubbo-go 社区 示例仓库 [github.com/apache/dubbo-go-sample](https://github.com/apache/dubbo-go-sample) ，`clone` 示例仓库得到完整的实践体验 
+还有更多示例，请自行去 Dubbo-go 示例仓库 [github.com/apache/dubbo-go-sample](https://github.com/apache/dubbo-go-sample) 
 
 
 ## 教程说明
@@ -12,9 +12,16 @@ p.s : 受实验室环境功能的限制，可自行去 Dubbo-go 社区 示例仓
 - Seata-golang 的基础功能体验
 - 电商交易背景下基于Seata AT模式的分布式事务解决方案体验
 
+依赖:
+- [ ] nacos
+- [ ] mysql
+- [ ] seata-golang
+
+示例已在环境准备之初自动`install`，如有安装失败，本教程提供了一键安装脚本；
+
+
 案例学习时间预计25分钟左右。
 
-点击右下角的"下一步"按钮继续。
 
 ## 准备工作
 本节，你将通过 git 命令下载程序代码，并启动 Nacos 服务端
@@ -66,7 +73,6 @@ sh ~/seata-script/init_seatagolang.sh
 本节，你将修改代码的一些基本配置，让程序可以运行。<br>
 请认真按照本节的引导操作。在完成修改后，一定要记得保存哦。
 
-（已默认，检查配置即可）
 
 ### 修改服务端 Order 配置
 
@@ -91,7 +97,7 @@ sh ~/seata-script/init_seatagolang.sh
 * 修改 `registries>nacos>address` Nacos 地址："127.0.0.1:65000"
 
 
-### 修改客户端配置
+### 修改 Client 配置
 
 **修改Seata地址**
 * 打开 <tutorial-editor-open-file filePath="/home/shell/shopping-order/go-client/conf/seata.yml">服务端的 seata.yml</tutorial-editor-open-file> 配置文件：
@@ -106,25 +112,29 @@ sh ~/seata-script/init_seatagolang.sh
 本节，你将使用 go 命令来运行上述的代码和配置
 
 ### 启动服务端
+
+#### 启动 Order 服务端
+
 1. 开启新 console 窗口执行 Order： <tutorial-terminal-open-tab name="Order服务端">点击我打开</tutorial-terminal-open-tab>
 
 2. 在新窗口中执行命令，进入cmd目录，
+
 ```bash
 cd shopping-order/go-server-order/cmd
 ```
+
 指定配置文件, 启动服务端
+
 ```bash
 export CONF_PROVIDER_FILE_PATH=../conf/server.yml && export SEATA_CONF_FILE=../conf/seata.yml && export GOPROXY=https://goproxy.io,direct && go run .
 ```
 
-看到下面的反馈则表示启动成功<br>
-```
- nacos/registry.go:200   update begin, service event: ServiceEvent{Action{add}, Path{dubbo...
-```
+#### 启动 Product 服务端
 
 1. 开启新 console 窗口执行 Product： <tutorial-terminal-open-tab name="Product服务端">点击我打开</tutorial-terminal-open-tab>
 
 2. 在新窗口中执行命令，进入cmd目录，
+
 ```bash
 cd shopping-order/go-server-product/cmd
 ```
@@ -134,13 +144,22 @@ cd shopping-order/go-server-product/cmd
 export CONF_PROVIDER_FILE_PATH=../conf/server.yml && export SEATA_CONF_FILE=../conf/seata.yml && export GOPROXY=https://goproxy.io,direct && go run .
 ```
 
-看到下面的反馈则表示启动成功<br>
-```
- nacos/registry.go:200   update begin, service event: ServiceEvent{Action{add}, Path{dubbo...
-```
 
-### 启动客户端
-1. 开启新 console 窗口： <tutorial-terminal-open-tab name="客户端">点击我打开</tutorial-terminal-open-tab>
+### 启动消费者并查看数据库
+
+#### 说明
+本示例为了演示分布式事务效果，可以通过与 `console` 输入指令进行交互，来查看 分布式事务正常提交 与 回滚 的直观效果。
+
+- 默认 `debug` 模式：可通过 Console 交互，否则直接自动运行
+- 两个演示模式: 
+  - 正常提交模式 ： 根据 Console 提示，输入 `normal`，事务正常提交模式，可查看数据库效果
+  - 正常提交模式 ： 根据 Console 提示，输入 `exception`，异常事务回滚模式，查看数据库回滚效果
+    - 回滚模式下，分布式事务会经历`commit: insert data success -> rollback: data undo`过程，程序会自动在关键节点停顿，查看数据库验证效果后，请输入任意继续程序
+
+
+#### 启动 Client
+
+1. 开启新 console 窗口： <tutorial-terminal-open-tab name="Client">点击我打开</tutorial-terminal-open-tab>
 
 2. 在新窗口中执行命令
 ```bash
@@ -152,25 +171,9 @@ cd shopping-order/go-client/cmd
 export CONF_CONSUMER_FILE_PATH=../conf/client.yml && export SEATA_CONF_FILE=../conf/seata.yml && export GOPROXY=https://goproxy.io,direct && go run .
 ```
 
-看到下面的反馈则表示调用成功<br>
+#### 查看数据库记录
 
-### 查看数据库记录
-
-#### 开启新 console 窗口：<br>
-
-1. `client` 提供了两个用例 “下单成功提交”，“下单失败回滚”
-
-```bash
-cd shopping-order/go-client/cmd
-```
-提交事务 & 事务回滚
-```go
-// commit success
-pkg.ProxySvc.CreateSo(context.TODO(), false)
-
-// rollback
-pkg.ProxySvc.CreateSo(context.TODO(), true)
-```
+1. 开启新 console 窗口： <tutorial-terminal-open-tab name="Mysql">点击我打开</tutorial-terminal-open-tab>
 
 2. 登录 Mysql 客户端查看记录
 
@@ -192,6 +195,7 @@ select * from seata_order.so_item;
 ```
 
 * 查看库存记录
+
 ```mysql
 use seata_product;
 ```
@@ -202,3 +206,5 @@ select * from seata_product.inventory;
 Dubbo-go 在电商交易背景下分布式事务示例完成～
 
 给个star鼓励一下我们吧： [github.com/apache/dubbo-go](https://github.com/apache/dubbo-go)
+
+
